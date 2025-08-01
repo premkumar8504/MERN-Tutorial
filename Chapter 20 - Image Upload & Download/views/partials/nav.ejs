@@ -1,0 +1,78 @@
+<header class="bg-red-500 text-white shadow-md sticky top-0 z-50">
+  <nav class="container mx-auto flex justify-between items-center py-3">
+    <a
+      href="/"
+      class="text-2xl font-bold tracking-tight px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition duration-300 shadow-sm <%= currentPage === 'index' ? 'ring-2 ring-white' : '' %>"
+      >airbnb</a
+    >
+    <ul class="flex space-x-2 md:space-x-4 items-center">
+      <% if (isLoggedIn) { %>
+        <% if(user && user.userType === 'guest') { %>
+      <li>
+        <a
+          href="/homes"
+          class="px-4 py-2 rounded-lg font-medium transition duration-300 <%= currentPage === 'Home' ? 'bg-white/20 ring-2 ring-white' : 'hover:bg-white/10' %>"
+          >Homes</a
+        >
+      </li>
+      <li>
+        <a
+          href="/favourites"
+          class="px-4 py-2 rounded-lg font-medium transition duration-300 <%= currentPage === 'favourites' ? 'bg-white/20 ring-2 ring-white' : 'hover:bg-white/10' %>"
+          >Favourites</a
+        >
+      </li>
+      <li>
+        <a
+          href="/bookings"
+          class="px-4 py-2 rounded-lg font-medium transition duration-300 <%= currentPage === 'bookings' ? 'bg-white/20 ring-2 ring-white' : 'hover:bg-white/10' %>"
+          >Bookings</a
+        >
+      </li>
+      <% } else { %>
+      <li>
+        <a
+          href="/host/host-home-list"
+          class="px-4 py-2 rounded-lg font-medium transition duration-300 <%= currentPage === 'host-homes' ? 'bg-white/20 ring-2 ring-white' : 'hover:bg-white/10' %>"
+          >Host Homes</a
+        >
+      </li>
+      <li>
+        <a
+          href="/host/add-home"
+          class="px-4 py-2 rounded-lg font-medium transition duration-300 <%= currentPage === 'addHome' ? 'bg-white/20 ring-2 ring-white' : 'hover:bg-white/10' %>"
+          >Add Home</a
+        >
+      </li>
+      <% } %>
+      <% } %>
+      <% if (!isLoggedIn) { %>
+      <li>
+        <a
+          href="/signup"
+          class="px-4 py-2 rounded-lg font-medium transition duration-300 hover:bg-white/10"
+          >Signup</a
+        >
+      </li>
+      <li>
+        <a
+          href="/login"
+          class="px-4 py-2 rounded-lg font-medium transition duration-300 hover:bg-white/10"
+          >Login</a
+        >
+      </li>
+      <% } else { %>
+      <li>
+        <form action="/logout" method="POST" class="inline">
+          <button
+            type="submit"
+            class="px-4 py-2 rounded-lg font-medium transition duration-300 hover:bg-white/10"
+          >
+            Logout
+          </button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

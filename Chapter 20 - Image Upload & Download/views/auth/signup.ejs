@@ -1,0 +1,63 @@
+<%- include('../partials/head') %>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <%- include('../partials/nav') %>
+    <main class="container mx-auto mt-28 p-10 bg-white rounded-3xl shadow-2xl max-w-lg">
+      <h1 class="text-4xl font-extrabold mb-10 text-center text-gray-800 tracking-tight">Register as a new User</h1>
+      <form action="/signup" method="POST" class="space-y-7">
+       <%- include('../partials/errors') %>
+        <input  
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value="<%= oldInput.firstName ? oldInput.firstName : '' %>"
+          class="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition"
+          required />
+        <input  
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value="<%= oldInput.lastName ? oldInput.lastName : '' %>"
+          class="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition"
+          required />
+        <input  
+          type="email"
+          name="email"
+          placeholder="test@example.com"
+          value="<%= oldInput.email ? oldInput.email : '' %>"
+          class="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition"
+          required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Your Password"
+          class="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition"
+          required />
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Your Password"
+          class="w-full px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 transition"
+          required />
+        <div class="flex flex-col gap-2 mb-4">
+          <p class="font-semibold text-gray-700">I want to register as:</p>
+          <div class="flex gap-10">
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="radio" name="userType" value="guest" id="guest" class="mr-2 accent-red-500" <%= oldInput.userType === 'guest' ? 'checked' : '' %> />
+              <span>Guest</span>
+            </label>
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="radio" name="userType" value="host" id="host" class="mr-2 accent-red-500" <%= oldInput.userType === 'host' ? 'checked' : '' %> />
+              <span>Host</span>
+            </label>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <input type="checkbox" name="terms" id="terms" class="mr-2 accent-red-500" required />
+          <label for="terms" class="text-gray-700">I agree to the terms and conditions</label>
+        </div>
+        <input type="submit" value="Register" class="w-full bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600 transition duration-300 shadow-lg" />
+      </form>
+    </main>
+  </body>
+</html>
